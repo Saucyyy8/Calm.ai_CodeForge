@@ -12,7 +12,7 @@ The central hub of the application, categorized to suit your current state of mi
 *   **Enjoy some games:** Take a break with fun arcade games.
 *   **Do you want to be productive?** Focus with productivity tools.
 
-![Dashboard Features](Screenshots/Dashboard%20Features.png)
+![Dashboard Features](Screenshots/Dashboard%20Features%201.png)
 
 ### 🧠 Mental Wellness Tools
 *   **Mood Quiz:** Assess your emotional state and get personalized advice.
