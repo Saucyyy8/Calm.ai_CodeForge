@@ -47,7 +47,7 @@ const QuizPage = () => {
             const response = await axios.post('/api/quiz', finalAnswers);
             // Navigate to dashboard with the mood result
             // The backend returns a Map, likely containing the mood or analysis
-            navigate('/dashboard', { state: { moodData: response.data } });
+            navigate('/dashboard', { state: response.data });
         } catch (error) {
             console.error("Error submitting quiz:", error);
             setLoading(false);

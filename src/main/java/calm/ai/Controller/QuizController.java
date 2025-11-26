@@ -18,8 +18,8 @@ import java.util.Map;
 @RequestMapping("/api/quiz")
 public class QuizController {
 
-    static final List<Questions> quizList = new ArrayList<>();
-    private final WebClient webClient;
+    @org.springframework.beans.factory.annotation.Autowired
+    private WebClient webClient;
 
     @Value("${recommender.service.mood-url}")
     private String moodWebhookUrl;
@@ -33,13 +33,13 @@ public class QuizController {
     @Value("${recommender.service.chat-url}")
     private String chatUrl;
 
-    public QuizController(WebClient.Builder webClientBuilder) {
-        this.webClient = webClientBuilder.build();
-    }
+    static final List<Questions> quizList = new ArrayList<>();
+    static final List<Questions> musicQuizList = new ArrayList<>();
 
     @PostConstruct
     public void init() {
         if (quizList.isEmpty()) {
+            // ... existing main quiz questions ...
             // Question 1: Physical Sensation
             quizList.add(new Questions(
                     "If you could describe how your body feels right now in one word, what would it be?",
@@ -89,11 +89,55 @@ public class QuizController {
                     "To feel something (I feel empty).",
                     "To just have someone listen to me."));
         }
+
+        if (musicQuizList.isEmpty()) {
+            musicQuizList.add(new Questions(
+                    "How are you feeling right now?",
+                    "Happy & Energetic",
+                    "Anxious & Stressed",
+                    "Sad & Melancholic",
+                    "Calm & Relaxed"));
+            musicQuizList.add(new Questions(
+                    "What is your current energy level?",
+                    "High - Ready to move",
+                    "Medium - Steady flow",
+                    "Low - Need to recharge",
+                    "Exhausted - Need rest"));
+            musicQuizList.add(new Questions(
+                    "What are you doing right now?",
+                    "Working / Studying",
+                    "Relaxing / Chilling",
+                    "Commuting / Traveling",
+                    "Working out / Active"));
+            musicQuizList.add(new Questions(
+                    "Any specific genre preference?",
+                    "Pop / Rock / Upbeat",
+                    "Jazz / Lofi / Chill",
+                    "Classical / Ambient",
+                    "HipHop / Electronic"));
+            musicQuizList.add(new Questions(
+                    "Vocals or Instrumental?",
+                    "Vocals",
+                    "Instrumental",
+                    "Mixed",
+                    "No Preference"));
+            musicQuizList.add(new Questions(
+                    "What vibe are you looking for?",
+                    "Uplifting & Motivating",
+                    "Calming & Soothing",
+                    "Focus & Concentration",
+                    "Deep & Emotional"));
+        }
     }
 
     @GetMapping()
     public ResponseEntity<List<Questions>> quiz() {
         return ResponseEntity.ok(quizList);
+    }
+
+    @GetMapping("/music/questions")
+    public ResponseEntity<List<Questions>> getMusicQuestions() {
+        return ResponseEntity.ok(musicQuizList);
     }
 
     @PostMapping()
@@ -120,14 +164,26 @@ public class QuizController {
 
     // The client is now responsible for sending the mood back
     @PostMapping("/music")
-    public Mono<ResponseEntity<Map>> getMusicRecommendation(@RequestBody Map<String, String> mood) {
-        if (mood == null) {
+    public Mono<ResponseEntity<Map>> getMusicRecommendation(@RequestBody List<String> selectedOptions) {
+        if (selectedOptions == null || selectedOptions.size() < 6) {
             return Mono.just(ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                    .body(Map.of("Error", "Mood must be provided in the request body.")));
+                    .body(Map.of("Error", "Please answer all 6 questions.")));
         }
+
+        // Construct a descriptive mood string from the answers
+        StringBuilder combinedMood = new StringBuilder();
+        String[] labels = { "Mood", "Energy", "Activity", "Genre", "Vocals", "Vibe" };
+
+        for (int i = 0; i < selectedOptions.size() && i < labels.length; i++) {
+            combinedMood.append(labels[i]).append(": ").append(selectedOptions.get(i)).append(", ");
+        }
+
+        Map<String, String> payload = new HashMap<>();
+        payload.put("mood", combinedMood.toString());
+
         return webClient.post()
                 .uri(musicRecommenderUrl)
-                .bodyValue(mood)
+                .bodyValue(payload)
                 .retrieve()
                 .bodyToMono(Map.class)
                 .map(ResponseEntity::ok);

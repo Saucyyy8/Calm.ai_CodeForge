@@ -9,4 +9,9 @@ public class AiApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(AiApplication.class, args);
 	}
+
+	@org.springframework.context.annotation.Bean
+	public org.springframework.web.reactive.function.client.WebClient webClient() {
+		return org.springframework.web.reactive.function.client.WebClient.builder().build();
+	}
 }
