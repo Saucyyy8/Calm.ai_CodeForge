@@ -35,6 +35,7 @@ public class QuizController {
 
     static final List<Questions> quizList = new ArrayList<>();
     static final List<Questions> musicQuizList = new ArrayList<>();
+    static final List<Questions> bookQuizList = new ArrayList<>();
 
     @PostConstruct
     public void init() {
@@ -128,6 +129,45 @@ public class QuizController {
                     "Focus & Concentration",
                     "Deep & Emotional"));
         }
+
+        if (bookQuizList.isEmpty()) {
+            bookQuizList.add(new Questions(
+                    "What genre are you in the mood for?",
+                    "Fiction / Novels",
+                    "Non-Fiction / Self-Help",
+                    "Mystery / Thriller",
+                    "Fantasy / Sci-Fi"));
+            bookQuizList.add(new Questions(
+                    "What's your reading pace preference?",
+                    "Quick read / Short stories",
+                    "Medium length / Engaging",
+                    "Long / Epic saga",
+                    "No preference"));
+            bookQuizList.add(new Questions(
+                    "What kind of ending do you prefer?",
+                    "Happy / Uplifting",
+                    "Thought-provoking / Open",
+                    "Emotional / Bittersweet",
+                    "Surprising / Twist"));
+            bookQuizList.add(new Questions(
+                    "What's your current mood?",
+                    "Adventurous / Curious",
+                    "Reflective / Contemplative",
+                    "Need escape / Distraction",
+                    "Seeking inspiration"));
+            bookQuizList.add(new Questions(
+                    "Preferred writing style?",
+                    "Simple / Easy to read",
+                    "Descriptive / Vivid",
+                    "Philosophical / Deep",
+                    "Fast-paced / Action"));
+            bookQuizList.add(new Questions(
+                    "What themes interest you?",
+                    "Love / Relationships",
+                    "Personal growth / Success",
+                    "Adventure / Discovery",
+                    "Social issues / History"));
+        }
     }
 
     @GetMapping()
@@ -138,6 +178,11 @@ public class QuizController {
     @GetMapping("/music/questions")
     public ResponseEntity<List<Questions>> getMusicQuestions() {
         return ResponseEntity.ok(musicQuizList);
+    }
+
+    @GetMapping("/book/questions")
+    public ResponseEntity<List<Questions>> getBookQuestions() {
+        return ResponseEntity.ok(bookQuizList);
     }
 
     @PostMapping()
@@ -190,14 +235,27 @@ public class QuizController {
     }
 
     @PostMapping("/book")
-    public Mono<ResponseEntity<Map>> getBookRecommendation(@RequestBody Map<String, String> mood) {
-        if (mood == null) {
+    public Mono<ResponseEntity<Map>> getBookRecommendation(@RequestBody List<String> selectedOptions) {
+        if (selectedOptions == null || selectedOptions.size() < 6) {
             return Mono.just(ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                    .body(Map.of("Error", "Mood must be provided in the request body.")));
+                    .body(Map.of("Error", "Please answer all 6 questions.")));
         }
+
+        // Construct a descriptive mood string from the answers
+        StringBuilder combinedMood = new StringBuilder();
+        String[] labels = { "Genre", "Reading Pace", "Ending Preference", "Current Mood", "Writing Style", "Themes" };
+        for (int i = 0; i < selectedOptions.size(); i++) {
+            combinedMood.append(labels[i]).append(": ").append(selectedOptions.get(i));
+            if (i < selectedOptions.size() - 1) {
+                combinedMood.append(", ");
+            }
+        }
+
+        Map<String, String> payload = Map.of("mood", combinedMood.toString());
+
         return webClient.post()
                 .uri(bookRecommenderUrl)
-                .bodyValue(mood)
+                .bodyValue(payload)
                 .retrieve()
                 .bodyToMono(Map.class)
                 .map(ResponseEntity::ok);
