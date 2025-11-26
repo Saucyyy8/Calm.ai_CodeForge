@@ -6,6 +6,8 @@ import QuizPage from './pages/QuizPage';
 import DashboardPage from './pages/DashboardPage';
 import MusicPage from './pages/MusicPage';
 import BookPage from './pages/BookPage';
+import TodoList from './pages/TodoList';
+import TypingTest from './pages/TypingTest';
 
 function App() {
   return (
@@ -17,6 +19,8 @@ function App() {
         <Route path="/dashboard" element={<DashboardPage />} />
         <Route path="/music" element={<MusicPage />} />
         <Route path="/book" element={<BookPage />} />
+        <Route path="/todo" element={<TodoList />} />
+        <Route path="/typing-test" element={<TypingTest />} />
       </Routes>
     </Router>
   );
