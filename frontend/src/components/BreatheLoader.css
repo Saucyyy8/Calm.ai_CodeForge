@@ -1,0 +1,58 @@
+.breathe-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: var(--background-color);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.circle {
+    width: 150px;
+    height: 150px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border-radius: 50%;
+    box-shadow: 0 0 20px rgba(117, 183, 158, 0.4);
+    animation: breathe 4s ease-in-out infinite;
+}
+
+.text {
+    margin-top: 2rem;
+    font-size: 1.5rem;
+    color: var(--text-color);
+    opacity: 0;
+    animation: fadeText 4s ease-in-out infinite;
+}
+
+@keyframes breathe {
+
+    0%,
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 20px rgba(117, 183, 158, 0.4);
+    }
+
+    50% {
+        transform: scale(1.5);
+        box-shadow: 0 0 40px rgba(117, 183, 158, 0.8);
+    }
+}
+
+@keyframes fadeText {
+
+    0%,
+    100% {
+        opacity: 0.5;
+        content: "Breathe In...";
+    }
+
+    50% {
+        opacity: 1;
+        content: "Breathe Out...";
+    }
+}

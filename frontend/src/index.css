@@ -1,0 +1,48 @@
+:root {
+  --primary-color: #6a8caf; /* Calming Blue */
+  --secondary-color: #75b79e; /* Soft Green */
+  --accent-color: #ee6c4d; /* Warm Accent */
+  --background-color: #f7f9fb; /* Off-white background */
+  --text-color: #2d3436; /* Dark Grey Text */
+  --card-bg: #ffffff;
+  --font-main: 'Inter', sans-serif;
+  --transition-speed: 0.3s;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-main);
+  background-color: var(--background-color);
+  color: var(--text-color);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button {
+  cursor: pointer;
+  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Utilities */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.card {
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  transition: transform var(--transition-speed);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
