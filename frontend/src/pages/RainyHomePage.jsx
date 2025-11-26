@@ -43,7 +43,7 @@ const RainyHomePage = () => {
             </video>
 
             <div className="content-wrapper">
-                <h1 className="title">Serene Shores</h1>
+                <h1 className="title">Calm.ai</h1>
                 <p className="subtitle">Let the waves wash away your worries.</p>
 
                 <button className="mood-btn" onClick={() => navigate('/dashboard')}>

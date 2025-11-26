@@ -59,8 +59,8 @@ const MusicPage = () => {
     return (
         <div className="dashboard-container">
             <header className="dashboard-header">
-                <div className="logo" onClick={() => navigate('/dashboard')} style={{ cursor: 'pointer' }}>Calm.ai</div>
-                <button className="nav-btn" onClick={() => navigate('/dashboard')}>Back to Dashboard</button>
+                <div className="logo" onClick={() => navigate('/dashboard')} style={{ cursor: 'pointer', color: '#4a90e2', background: 'none', WebkitTextFillColor: '#4a90e2' }}>Calm.ai</div>
+
             </header>
 
             <main className="dashboard-content" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '80vh' }}>
@@ -72,7 +72,7 @@ const MusicPage = () => {
                                 style={{
                                     width: `${((currentQuestionIndex + 1) / questions.length) * 100}%`,
                                     height: '100%',
-                                    background: 'linear-gradient(90deg, #6a11cb 0%, #2575fc 100%)',
+                                    background: 'linear-gradient(90deg, #4a90e2 0%, #50e3c2 100%)',
                                     transition: 'width 0.4s cubic-bezier(0.4, 0, 0.2, 1)'
                                 }}
                             ></div>
@@ -104,11 +104,11 @@ const MusicPage = () => {
                                             justifyContent: 'space-between'
                                         }}
                                         onMouseOver={(e) => {
-                                            e.currentTarget.style.borderColor = '#2575fc';
-                                            e.currentTarget.style.background = '#f8faff';
-                                            e.currentTarget.style.color = '#2575fc';
+                                            e.currentTarget.style.borderColor = '#4a90e2';
+                                            e.currentTarget.style.background = '#f0f8ff';
+                                            e.currentTarget.style.color = '#4a90e2';
                                             e.currentTarget.style.transform = 'translateY(-2px)';
-                                            e.currentTarget.style.boxShadow = '0 4px 12px rgba(37, 117, 252, 0.1)';
+                                            e.currentTarget.style.boxShadow = '0 4px 12px rgba(74, 144, 226, 0.1)';
                                         }}
                                         onMouseOut={(e) => {
                                             e.currentTarget.style.borderColor = '#f0f0f0';
@@ -130,9 +130,9 @@ const MusicPage = () => {
                 {step === 'result' && recommendation && (
                     <section className="recommendation-result" style={{ width: '100%', maxWidth: '800px', animation: 'fadeIn 0.5s ease' }}>
                         <div className="result-header" style={{ textAlign: 'center', marginBottom: '3rem' }}>
-                            <h2 style={{ fontSize: '2.5rem', marginBottom: '1rem', background: 'linear-gradient(90deg, #6a11cb 0%, #2575fc 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Your Sonic Vibe</h2>
+                            <h2 style={{ fontSize: '2.5rem', marginBottom: '1rem', color: 'white', fontWeight: '700' }}>Your Sonic Vibe</h2>
                             {(recommendation.motivating_message || recommendation.message) && (
-                                <p style={{ fontSize: '1.2rem', color: '#666', maxWidth: '600px', margin: '0 auto' }}>
+                                <p style={{ fontSize: '1.2rem', color: 'white', maxWidth: '600px', margin: '0 auto', opacity: 0.9 }}>
                                     {recommendation.motivating_message || recommendation.message}
                                 </p>
                             )}
@@ -154,7 +154,7 @@ const MusicPage = () => {
                                         <div className="track-icon" style={{
                                             width: '60px',
                                             height: '60px',
-                                            background: 'linear-gradient(135deg, #6a11cb 0%, #2575fc 100%)',
+                                            background: 'linear-gradient(135deg, #4a90e2 0%, #50e3c2 100%)',
                                             borderRadius: '12px',
                                             display: 'flex',
                                             alignItems: 'center',

@@ -25,7 +25,7 @@ const DashboardPage = () => {
             <header className="dashboard-header">
                 <div className="logo" onClick={() => navigate('/')} style={{ cursor: 'pointer' }}>Calm.ai</div>
                 <div className="user-profile">
-                    <span>Welcome, Friend</span>
+                    <span>Welcome User</span>
                     <div className="avatar"></div>
                 </div>
             </header>
@@ -53,34 +53,60 @@ const DashboardPage = () => {
                     </div>
                 </section>
 
-                <section className="tools-grid">
-                    <div className="tool-card card" onClick={() => handleToolClick('music')}>
-                        <h3>🎵 Music Recommender</h3>
-                        <p>Find tunes to match or lift your mood.</p>
+                {/* Stressed Section */}
+                <section className="category-section">
+                    <h2 className="category-title">Are you stressed?</h2>
+                    <div className="tools-grid">
+                        <div className="tool-card card" onClick={() => handleToolClick('music')}>
+                            <h3>🎵 Music Recommender</h3>
+                            <p>Find tunes to match or lift your mood.</p>
+                        </div>
+                        <div className="tool-card card" onClick={() => handleToolClick('book')}>
+                            <h3>📚 Book Recommender</h3>
+                            <p>Discover stories that resonate with you.</p>
+                        </div>
+                        <div className="tool-card card" onClick={() => setIsChatOpen(true)}>
+                            <h3>🤖 Chat Companion</h3>
+                            <p>Talk to our AI friend.</p>
+                        </div>
                     </div>
-                    <div className="tool-card card" onClick={() => handleToolClick('book')}>
-                        <h3>📚 Book Recommender</h3>
-                        <p>Discover stories that resonate with you.</p>
+                </section>
+
+                {/* Games Section */}
+                <section className="category-section">
+                    <h2 className="category-title">Enjoy some games</h2>
+                    <div className="tools-grid">
+                        <div className="tool-card card" onClick={() => navigate('/flappy-bird')}>
+                            <h3>🐦 Flappy Bird</h3>
+                            <p>Tap to fly!</p>
+                        </div>
+                        <div className="tool-card card" onClick={() => navigate('/space-shooter')}>
+                            <h3>🚀 Space Shooter</h3>
+                            <p>Defend the galaxy!</p>
+                        </div>
+                        <div className="tool-card card" onClick={() => navigate('/fruit-slicer')}>
+                            <h3>🍉 Fruit Slicer</h3>
+                            <p>Slice and dice!</p>
+                        </div>
                     </div>
-                    <div className="tool-card card" onClick={() => setIsChatOpen(true)}>
-                        <h3>🤖 Chat Companion</h3>
-                        <p>Talk to our AI friend.</p>
-                    </div>
-                    <div className="tool-card card" onClick={() => navigate('/todo')}>
-                        <h3>📝 To-Do List</h3>
-                        <p>Organize your tasks and clear your mind.</p>
-                    </div>
-                    <div className="tool-card card" onClick={() => navigate('/typing-test')}>
-                        <h3>⌨️ CalmType</h3>
-                        <p>Focus your mind with a typing flow test.</p>
-                    </div>
-                    <div className="tool-card card" onClick={() => navigate('/learn-java')}>
-                        <h3>☕ Learn Java</h3>
-                        <p>Master algorithms with a calm, linear flow.</p>
-                    </div>
-                    <div className="tool-card card disabled">
-                        <h3>🗑️ Anxiety Shredder</h3>
-                        <p>Coming Soon</p>
+                </section>
+
+                {/* Productive Section */}
+                <section className="category-section">
+                    <h2 className="category-title">Do you want to be productive?</h2>
+                    <div className="tools-grid">
+                        <div className="tool-card card" onClick={() => navigate('/todo')}>
+                            <h3>📝 To-Do List</h3>
+                            <p>Organize your tasks and clear your mind.</p>
+                        </div>
+                        <div className="tool-card card" onClick={() => navigate('/typing-test')}>
+                            <h3>⌨️ Serene Keys</h3>
+                            <p>Focus your mind with a typing flow test.</p>
+                        </div>
+                        <div className="tool-card card" onClick={() => navigate('/learn-java')}>
+                            <h3>☕ Learn Java</h3>
+                            <p>Master algorithms with a calm, linear flow.</p>
+                        </div>
                     </div>
                 </section>
 
@@ -136,43 +162,36 @@ const DashboardPage = () => {
 
                 {/* Reviews Section */}
                 <section className="reviews-section">
-                    <h2 className="section-title">Over 2 million 5-star reviews.</h2>
+                    <h2 className="section-title">User Review</h2>
                     <div className="reviews-grid">
                         <div className="review-card">
                             <div className="quote-icon">“</div>
-                            <p className="review-text">When I cannot fall asleep, I turn on this app and am out within 5 minutes.</p>
-                            <p className="review-author">Brandy from Houston</p>
+                            <p className="review-text">This app has completely transformed my daily routine. The music recommendations are spot on!</p>
+                            <p className="review-author">Suhas</p>
                             <div className="stars">★★★★★</div>
                         </div>
                         <div className="review-card">
                             <div className="quote-icon">“</div>
-                            <p className="review-text">I have a very busy brain and can find it hard to unwind. Now a daily practice is actually so wonderful and healing for me.</p>
-                            <p className="review-author">John from Chicago</p>
+                            <p className="review-text">I love the book recommendations. It's like the AI knows exactly what I want to read next.</p>
+                            <p className="review-author">Sathvik</p>
                             <div className="stars">★★★★★</div>
                         </div>
                         <div className="review-card">
                             <div className="quote-icon">“</div>
-                            <p className="review-text">Calm has completely changed how I start my day. I feel more connected and grounded.</p>
-                            <p className="review-author">Allison from New York</p>
-                            <div className="stars">★★★★★</div>
-                        </div>
-                        {/* New Reviews */}
-                        <div className="review-card">
-                            <div className="quote-icon">“</div>
-                            <p className="review-text">The sleep stories are a game changer. I've never slept better in my life.</p>
-                            <p className="review-author">Michael from London</p>
+                            <p className="review-text">The UI is so beautiful and calming. It really helps me de-stress after a long day.</p>
+                            <p className="review-author">Shreya</p>
                             <div className="stars">★★★★★</div>
                         </div>
                         <div className="review-card">
                             <div className="quote-icon">“</div>
-                            <p className="review-text">A must-have app for anyone dealing with stress. The meditations are short and effective.</p>
-                            <p className="review-author">Sarah from Toronto</p>
+                            <p className="review-text">The typing test is my favorite feature. It's so relaxing and helps me focus.</p>
+                            <p className="review-author">Shruti</p>
                             <div className="stars">★★★★★</div>
                         </div>
                         <div className="review-card">
                             <div className="quote-icon">“</div>
-                            <p className="review-text">I love the variety of content. There's always something new to discover.</p>
-                            <p className="review-author">David from Sydney</p>
+                            <p className="review-text">An impressive project with a great user experience. The integration of various features is seamless.</p>
+                            <p className="review-author">Judge</p>
                             <div className="stars">★★★★★</div>
                         </div>
                     </div>

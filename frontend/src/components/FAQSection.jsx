@@ -22,40 +22,40 @@ const FAQSection = () => {
 
             <div className="faq-category">
                 <h3>GENERAL</h3>
-                <FAQItem question="What is Calm?">
-                    <p>Calm is the #1 app for sleep, meditation and relaxation. Join the millions experiencing lower stress, less anxiety, and more restful sleep with our guided meditations, Sleep Stories, breathing programs, masterclasses and relaxing music.</p>
+                <FAQItem question="What is Calm.ai?">
+                    <p>Calm.ai is your personal mental wellness companion that uses AI to recommend music, books, and activities tailored to your current mood. We help you find peace and productivity in one place.</p>
                 </FAQItem>
-                <FAQItem question="What's included in a Calm subscription?">
-                    <p>A subscription gives you unlimited access to our entire library of content, including hundreds of guided meditations, Sleep Stories, music tracks, and masterclasses.</p>
+                <FAQItem question="How does the mood detection work?">
+                    <p>We use advanced AI algorithms to analyze your responses to our interactive quizzes. Based on your answers, we suggest the perfect content to either match your vibe or lift your spirits.</p>
                 </FAQItem>
-                <FAQItem question="Where should I get started once I download the app?">
-                    <p>We recommend starting with the "Daily Calm," a 10-minute daily meditation to help you build a consistent practice.</p>
+                <FAQItem question="Is Calm.ai free to use?">
+                    <p>Yes! All our core features including music and book recommendations, the chat companion, and relaxation tools are completely free to use.</p>
                 </FAQItem>
-                <FAQItem question="What devices support the Calm app?">
-                    <p>Calm is available on iOS, Android, and via our website on desktop computers. We also have integrations with Apple Watch, Sonos, and more.</p>
+                <FAQItem question="Do I need an account?">
+                    <p>No account is needed to get started. You can jump right in and start exploring our features immediately without any sign-up barriers.</p>
                 </FAQItem>
-                <FAQItem question="How do I cancel?">
-                    <p>You can cancel your subscription at any time through your account settings on the platform where you purchased it (Apple App Store, Google Play Store, or Calm.com).</p>
-                </FAQItem>
-            </div>
-
-            <div className="faq-category">
-                <h3>MEDITATION & MINDFULNESS</h3>
-                <FAQItem question="What is meditation?">
-                    <p>Meditation is a practice where an individual uses a technique – such as mindfulness, or focusing the mind on a particular object, thought, or activity – to train attention and awareness, and achieve a mentally clear and emotionally calm and stable state.</p>
-                </FAQItem>
-                <FAQItem question="What is mindfulness?">
-                    <p>Mindfulness is the basic human ability to be fully present, aware of where we are and what we’re doing, and not overly reactive or overwhelmed by what’s going on around us.</p>
+                <FAQItem question="How can I contact support?">
+                    <p>You can reach out to our team through the 'Contact Us' section or join our community discord for help, feedback, and feature requests.</p>
                 </FAQItem>
             </div>
 
             <div className="faq-category">
-                <h3>SOUNDSCAPES</h3>
-                <FAQItem question="How do different sound frequencies affect your brain?">
-                    <p>Different sound frequencies can help induce different brainwave states, such as relaxation (alpha waves) or deep sleep (delta waves).</p>
+                <h3>FEATURES</h3>
+                <FAQItem question="How does the Music Recommender work?">
+                    <p>Our AI analyzes your mood and preferences to curate a personalized playlist from Spotify and YouTube that resonates with how you're feeling right now.</p>
                 </FAQItem>
-                <FAQItem question="How do binaural beats help improve focus and reduce anxiety?">
-                    <p>Binaural beats involve playing two slightly different frequencies in each ear, which the brain perceives as a single new frequency. This can help entrain the brain to desired states of focus or relaxation.</p>
+                <FAQItem question="Can I get book recommendations?">
+                    <p>Absolutely! Our Book Recommender suggests titles based on your interests and emotional state, helping you find your next great read that fits your current headspace.</p>
+                </FAQItem>
+            </div>
+
+            <div className="faq-category">
+                <h3>TOOLS</h3>
+                <FAQItem question="What is the 'Learn Java' feature?">
+                    <p>It's a calm, linear way to master Java algorithms. We believe learning should be stress-free, so we've designed a distraction-free environment for you to practice coding at your own pace.</p>
+                </FAQItem>
+                <FAQItem question="What is CalmType?">
+                    <p>CalmType is a relaxation tool that uses typing exercises to help you focus your mind and enter a state of flow, reducing anxiety and stress through rhythmic action.</p>
                 </FAQItem>
             </div>
         </section>

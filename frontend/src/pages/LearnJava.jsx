@@ -150,7 +150,7 @@ const LearnJava = () => {
     return (
         <div className="learn-java-container">
             <header className="java-header">
-                <div className="logo">🎮 Java Bot's Adventure</div>
+                <Link to="/dashboard" className="logo" style={{ textDecoration: 'none', color: '#6a8caf', cursor: 'pointer' }}>Calm.ai</Link>
                 <div className="map-progress">
                     {PROBLEMS.map((p, index) => (
                         <div key={p.id} className={`map-node ${index <= currentProblemIndex ? 'active' : ''} ${index === currentProblemIndex ? 'current' : ''}`}>

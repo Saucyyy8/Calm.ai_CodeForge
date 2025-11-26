@@ -1,0 +1,114 @@
+.space-shooter-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #0b0c10;
+    /* Deep space black */
+    font-family: 'Outfit', sans-serif;
+    position: relative;
+    overflow: hidden;
+}
+
+.game-canvas {
+    border: 4px solid #45a29e;
+    /* Cyan border */
+    border-radius: 8px;
+    background-color: #1f2833;
+    /* Dark blue-grey */
+    box-shadow: 0 0 20px rgba(69, 162, 158, 0.5);
+    cursor: crosshair;
+}
+
+.game-header {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 10;
+}
+
+.score-display {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #66fcf1;
+    /* Bright cyan */
+    text-shadow: 0 0 10px rgba(102, 252, 241, 0.5);
+    z-index: 5;
+    pointer-events: none;
+}
+
+.game-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 20;
+    backdrop-filter: blur(5px);
+}
+
+.game-message {
+    background: #1f2833;
+    padding: 2rem 4rem;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 0 30px rgba(102, 252, 241, 0.2);
+    border: 2px solid #45a29e;
+    animation: zoomIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.game-message h2 {
+    font-size: 3rem;
+    margin: 0 0 1rem;
+    color: #66fcf1;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.game-message p {
+    font-size: 1.2rem;
+    color: #c5c6c7;
+    margin-bottom: 2rem;
+}
+
+.play-btn {
+    padding: 1rem 3rem;
+    font-size: 1.2rem;
+    background: transparent;
+    color: #66fcf1;
+    border: 2px solid #66fcf1;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: all 0.2s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.play-btn:hover {
+    background: #66fcf1;
+    color: #0b0c10;
+    box-shadow: 0 0 20px rgba(102, 252, 241, 0.5);
+    transform: scale(1.05);
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}

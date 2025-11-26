@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './TypingTest.css';
 
 const WORDS_LIST = [
@@ -9,6 +9,7 @@ const WORDS_LIST = [
 const GAME_DURATION = 30;
 
 const TypingTest = () => {
+    const navigate = useNavigate();
     const [words, setWords] = useState([]);
     const [timeLeft, setTimeLeft] = useState(GAME_DURATION);
     const [status, setStatus] = useState('waiting'); // waiting, playing, finished
@@ -165,13 +166,15 @@ const TypingTest = () => {
     return (
         <div className="typing-container" onClick={() => inputRef.current && inputRef.current.focus()}>
             <header className="typing-header">
-                <div className="typing-logo">
-                    <span>⌨️</span> CalmType
+                <div className="typing-logo" onClick={() => navigate('/dashboard')} style={{ cursor: 'pointer' }}>
+                    Calm.ai
                 </div>
                 <div className="stats-bar">
-                    <span className="timer">{timeLeft}</span>
+                    <span className="timer" style={{ fontSize: '1.2rem', fontWeight: 'normal', letterSpacing: '1px' }}>Stay calm and flow...</span>
                 </div>
-                <Link to="/dashboard" className="back-link">Exit</Link>
+                <div className="page-title" style={{ fontSize: '1.5rem', fontWeight: 'bold', color: 'var(--text-color)' }}>
+                    Serene Keys
+                </div>
             </header>
 
             <div className={`game-area ${status === 'finished' ? 'blur-overlay' : ''}`}>

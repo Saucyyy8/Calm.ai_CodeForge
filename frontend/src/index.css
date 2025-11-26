@@ -1,18 +1,38 @@
+@import "tailwindcss";
+
+@theme {
+  --animate-aurora: aurora 60s linear infinite;
+
+  @keyframes aurora {
+    from {
+      background-position: 50% 50%, 50% 50%;
+    }
+
+    to {
+      background-position: 350% 50%, 350% 50%;
+    }
+  }
+}
+
 :root {
-  --primary-color: #6a8caf; /* Calming Blue */
-  --secondary-color: #75b79e; /* Soft Green */
-  --accent-color: #ee6c4d; /* Warm Accent */
-  --background-color: #f7f9fb; /* Off-white background */
-  --text-color: #2d3436; /* Dark Grey Text */
+  --primary-color: #6a8caf;
+  /* Calming Blue */
+  --secondary-color: #75b79e;
+  /* Soft Green */
+  --accent-color: #ee6c4d;
+  /* Warm Accent */
+  --background-color: #f7f9fb;
+  /* Off-white background */
+  --text-color: #2d3436;
+  /* Dark Grey Text */
   --card-bg: #ffffff;
-  --font-main: 'Inter', sans-serif;
+  --font-main: 'Outfit', sans-serif;
   --transition-speed: 0.3s;
 }
 
 body {
   margin: 0;
   font-family: var(--font-main);
-  background-color: var(--background-color);
   color: var(--text-color);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
