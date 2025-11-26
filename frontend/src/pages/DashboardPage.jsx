@@ -86,6 +86,10 @@ const DashboardPage = () => {
                         <h3>⌨️ CalmType</h3>
                         <p>Focus your mind with a typing flow test.</p>
                     </div>
+                    <div className="tool-card card" onClick={() => window.location.href = '/learn-java'}>
+                        <h3>☕ Learn Java</h3>
+                        <p>Master algorithms with a calm, linear flow.</p>
+                    </div>
                     <div className="tool-card card disabled">
                         <h3>🗑️ Anxiety Shredder</h3>
                         <p>Coming Soon</p>

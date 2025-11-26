@@ -5,6 +5,7 @@ import QuizPage from './pages/QuizPage';
 import DashboardPage from './pages/DashboardPage';
 import TodoList from './pages/TodoList';
 import TypingTest from './pages/TypingTest';
+import LearnJava from './pages/LearnJava';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/dashboard" element={<DashboardPage />} />
         <Route path="/todo" element={<TodoList />} />
         <Route path="/typing-test" element={<TypingTest />} />
+        <Route path="/learn-java" element={<LearnJava />} />
       </Routes>
     </Router>
   );
