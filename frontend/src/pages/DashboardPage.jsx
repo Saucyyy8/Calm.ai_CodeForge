@@ -78,6 +78,14 @@ const DashboardPage = () => {
                         <h3>🤖 Chat Companion</h3>
                         <p>Talk to our AI friend.</p>
                     </div>
+                    <div className="tool-card card" onClick={() => window.location.href = '/todo'}>
+                        <h3>📝 To-Do List</h3>
+                        <p>Organize your tasks and clear your mind.</p>
+                    </div>
+                    <div className="tool-card card" onClick={() => window.location.href = '/typing-test'}>
+                        <h3>⌨️ CalmType</h3>
+                        <p>Focus your mind with a typing flow test.</p>
+                    </div>
                     <div className="tool-card card disabled">
                         <h3>🗑️ Anxiety Shredder</h3>
                         <p>Coming Soon</p>
